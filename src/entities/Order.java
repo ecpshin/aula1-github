@@ -1,5 +1,6 @@
 package entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import entities.enums.OrderStatus;
@@ -43,10 +44,17 @@ public class Order {
 	public void setOs(OrderStatus os) {
 		this.os = os;
 	}
+	
+	public String convertData(Date data) {		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		return sdf.format(data);
+	}
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", moment=" + moment + ", os=" + os + "]";
+		return "Order ID: " + id 
+				+ "\nData:" + this.convertData(moment) 
+				+ ", Order Status: " + os;
 	}	
 	
 }
